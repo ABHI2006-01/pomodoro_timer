@@ -1,0 +1,19 @@
+{
+  "name": "zen-space-pomodoro",
+  "version": "1.0.0",
+  "description": "A calm, aesthetic Pomodoro timer and productivity application.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "pomodoro",
+    "timer",
+    "productivity",
+    "zen",
+    "ambient-sounds"
+  ],
+  "author": "Antigravity",
+  "license": "MIT"
+}

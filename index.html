@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZenSpace - A calm, aesthetic, and premium Pomodoro timer and productivity app. Customize your focus with ambient sounds and zen themes.">
+  <title>ZenSpace | Calm Pomodoro & Focus</title>
+  
+  <!-- Premium Professional Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Link -->
+  <link rel="stylesheet" href="styles.css?v=9">
+</head>
+<body class="theme-forest">
+  <div class="background-decor">
+    <div class="glow-orb orb-1"></div>
+    <div class="glow-orb orb-2"></div>
+    <div class="glow-orb orb-3"></div>
+    <!-- Premium Floating Blurred Background Artwork -->
+    <div class="bg-artwork-container">
+      <img src="assets/cozy_rainy_bg.jpg?v=2" alt="Zen Background Art" class="bg-artwork">
+      <div class="bg-overlay"></div>
+    </div>
+  </div>
+
+  <div class="app-container">
+    <!-- Top Navigation Header -->
+    <header class="app-header">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 24 24" width="24" height="24">
+          <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 6v6l4 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="2" fill="currentColor"/>
+        </svg>
+        <span>ZenSpace</span>
+      </div>
+      
+      <div class="header-controls">
+        <!-- Streak Indicator -->
+        <div class="streak-badge" title="Focus Streak">
+          <svg class="streak-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+            <path d="M17.66 11.2C17.43 10.9 17.15 10.64 16.89 10.38C16.22 9.7 15.46 9.17 14.62 8.75C13.73 8.31 12.78 8.01 11.8 7.88C11.59 7.85 11.37 8.02 11.35 8.23C11.33 8.44 11.47 8.63 11.69 8.68C12.92 8.93 14.07 9.47 15.06 10.23C15.22 10.35 15.37 10.49 15.5 10.64C15.8 11 16.03 11.39 16.19 11.82C16.48 12.61 16.49 13.48 16.24 14.28C15.93 15.26 15.28 16.1 14.42 16.68C13.56 17.26 12.52 17.55 11.48 17.5C10.15 17.44 8.89 16.87 8 15.91C7.11 14.95 6.64 13.68 6.7 12.35C6.73 11.66 6.89 10.99 7.16 10.37C7.43 9.75 7.81 9.19 8.29 8.72C8.77 8.25 9.34 7.87 9.96 7.6C10.58 7.33 11.25 7.17 11.94 7.14C12.16 7.13 12.33 6.95 12.32 6.73C12.31 6.51 12.12 6.34 11.9 6.35C10.74 6.42 9.62 6.77 8.63 7.37C7.64 7.97 6.82 8.81 6.22 9.81C5.62 10.81 5.27 11.94 5.2 13.12C5.13 14.3 5.34 15.48 5.81 16.56C6.44 18 7.56 19.18 9 19.86C10.44 20.54 12.09 20.67 13.62 20.23C15.15 19.79 16.47 18.8 17.3 17.45C18.13 16.1 18.42 14.5 18.1 13C18.04 12.4 17.89 11.8 17.66 11.2Z"/>
+            <path d="M12.03 2.03C11.96 2.01 11.88 2 11.8 2C11.64 2 11.49 2.07 11.39 2.21C9.69 4.61 9.17 6.07 9.5 7.42C9.55 7.63 9.74 7.77 9.95 7.74C10.16 7.71 10.3 7.52 10.27 7.31C10.02 6.27 10.45 5.09 11.8 3.25C13.15 5.09 13.58 6.27 13.33 7.31C13.3 7.52 13.44 7.71 13.65 7.74C13.86 7.77 14.05 7.63 14.1 7.42C14.43 6.07 13.91 4.61 12.21 2.21C12.16 2.13 12.1 2.07 12.03 2.03Z"/>
+          </svg>
+          <span class="streak-count" id="streak-count">0</span> day streak
+        </div>
+        
+        <!-- Theme Controls -->
+        <div class="theme-selector">
+          <button class="theme-btn active" data-theme="forest" title="Zen Forest">
+            <span class="color-dot dot-forest"></span>
+          </button>
+          <button class="theme-btn" data-theme="ocean" title="Ocean Deep">
+            <span class="color-dot dot-ocean"></span>
+          </button>
+          <button class="theme-btn" data-theme="desert" title="Desert Dusk">
+            <span class="color-dot dot-desert"></span>
+          </button>
+          <button class="theme-btn" data-theme="cosmic" title="Cosmic Calm">
+            <span class="color-dot dot-cosmic"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Dashboard Grid -->
+    <main class="dashboard-grid">
+      
+      <!-- LEFT COLUMN: Main Timer Card -->
+      <section class="timer-section glass-card">
+        <div class="timer-modes">
+          <button class="mode-btn active" data-mode="focus" id="mode-focus">Focus</button>
+          <button class="mode-btn" data-mode="short" id="mode-short">Short Break</button>
+          <button class="mode-btn" data-mode="long" id="mode-long">Long Break</button>
+        </div>
+
+        <div class="timer-visual-container">
+          <!-- Circular Progress SVG -->
+          <svg class="progress-ring" viewBox="0 0 220 220">
+            <!-- Background circle -->
+            <circle class="progress-ring-bg" cx="110" cy="110" r="95" stroke-width="3" fill="transparent"/>
+            <!-- Active progress circle -->
+            <circle class="progress-ring-active" cx="110" cy="110" r="95" stroke-width="4" fill="transparent" stroke-linecap="round"/>
+          </svg>
+          
+          <div class="timer-display">
+            <span id="timer-time" class="time-text">25:00</span>
+            <span id="timer-label" class="label-text">Breathe & Focus</span>
+          </div>
+        </div>
+
+        <!-- Task focus detail inside timer -->
+        <div class="timer-focus-task" id="active-task-container">
+          <p class="focus-prefix">Current Focus</p>
+          <p class="focus-title" id="active-task-title">No task selected</p>
+        </div>
+
+        <div class="timer-controls">
+          <button class="control-btn btn-secondary" id="btn-reset" title="Reset Timer">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <button class="control-btn btn-primary" id="btn-play-pause" title="Start Timer">
+            <svg id="play-icon" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M8 5v14l11-7z"/>
+            </svg>
+            <svg id="pause-icon" class="hidden" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+            </svg>
+          </button>
+
+          <button class="control-btn btn-secondary" id="btn-skip" title="Skip Session">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Widget Grid -->
+      <div class="widgets-column">
+        
+        <!-- WIDGET 1: Tasks Manager -->
+        <section class="widget-card glass-card task-widget">
+          <div class="widget-header">
+            <h3>Focus Checklist</h3>
+            <span class="widget-badge" id="task-completion-ratio">0/0 Tasks</span>
+          </div>
+          
+          <div class="task-list-container" id="task-list">
+            <!-- Dynamic task items injected here -->
+            <div class="task-empty-state" id="task-empty">
+              <svg viewBox="0 0 24 24" width="48" height="48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <p>Your checklist is empty. Add a task to start focusing.</p>
+            </div>
+          </div>
+
+          <form class="task-add-form" id="task-form">
+            <input type="text" id="task-input" placeholder="What are you working on next?" autocomplete="off" required maxlength="80">
+            
+            <div class="form-row">
+              <div class="est-pomo-input">
+                <label for="task-est">Est. Sessions</label>
+                <div class="number-picker">
+                  <button type="button" id="pomo-dec" class="picker-btn">-</button>
+                  <input type="number" id="task-est" value="1" min="1" max="10" readonly>
+                  <button type="button" id="pomo-inc" class="picker-btn">+</button>
+                </div>
+              </div>
+              <button type="submit" class="btn-add" id="btn-add-task">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"/>
+                  <line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+                <span>Add Task</span>
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <!-- WIDGET 2: Ambient Sound Mixer -->
+        <section class="widget-card glass-card ambient-widget">
+          <div class="widget-header">
+            <h3>Ambient Sounds</h3>
+            <div class="volume-master-container">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+                <path d="M15.54 8.46a5 5 0 0 1 0 7.07" stroke-linecap="round"/>
+                <path d="M19.07 4.93a10 10 0 0 1 0 14.14" stroke-linecap="round"/>
+              </svg>
+              <input type="range" id="master-volume" min="0" max="1" step="0.05" value="0.7" title="Master Ambient Volume">
+            </div>
+          </div>
+
+          <div class="ambient-grid">
+            <!-- Sound 1: Deep Rain -->
+            <div class="ambient-item" id="sound-rain">
+              <div class="ambient-control-row">
+                <button class="ambient-toggle" data-sound="rain" title="Toggle Rain">
+                  <svg class="sound-off-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="4" x2="20" y2="20"/>
+                    <path d="M20 16.58A5 5 0 0 0 18 7h-1.26A8 8 0 0 0 4 15.25"/>
+                    <path d="M8 20v2M12 20v2M16 20v2"/>
+                  </svg>
+                  <svg class="sound-on-icon hidden" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 17.58A5 5 0 0 0 18 8h-1.26A8 8 0 1 0 4 16.25"/>
+                    <path d="M8 20v2M12 20v2M16 20v2"/>
+                  </svg>
+                </button>
+                <div class="ambient-details">
+                  <span class="ambient-label">Deep Rain</span>
+                  <input type="range" class="ambient-slider" data-sound="rain" min="0" max="1" step="0.05" value="0.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- Sound 2: Wind Whisper -->
+            <div class="ambient-item" id="sound-wind">
+              <div class="ambient-control-row">
+                <button class="ambient-toggle" data-sound="wind" title="Toggle Wind">
+                  <svg class="sound-off-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="4" x2="20" y2="20"/>
+                    <path d="M9.59 4.59A2 2 0 1 1 11 8H2M12.59 19.41A2 2 0 1 0 14 16H2M22 12H2"/>
+                  </svg>
+                  <svg class="sound-on-icon hidden" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9.59 4.59A2 2 0 1 1 11 8H2M12.59 19.41A2 2 0 1 0 14 16H2M22 12H2"/>
+                  </svg>
+                </button>
+                <div class="ambient-details">
+                  <span class="ambient-label">Zen Wind</span>
+                  <input type="range" class="ambient-slider" data-sound="wind" min="0" max="1" step="0.05" value="0.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- Sound 3: Brown Focus Hum -->
+            <div class="ambient-item" id="sound-hum">
+              <div class="ambient-control-row">
+                <button class="ambient-toggle" data-sound="hum" title="Toggle Focus Hum">
+                  <svg class="sound-off-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="4" x2="20" y2="20"/>
+                    <path d="M12 2v20M17 5v14M22 9v6M7 8v8M2 10v4"/>
+                  </svg>
+                  <svg class="sound-on-icon hidden" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2v20M17 5v14M22 9v6M7 8v8M2 10v4"/>
+                  </svg>
+                </button>
+                <div class="ambient-details">
+                  <span class="ambient-label">Binaural Hum</span>
+                  <input type="range" class="ambient-slider" data-sound="hum" min="0" max="1" step="0.05" value="0.5">
+                </div>
+              </div>
+            </div>
+
+            <!-- Sound 4: Cozy Fireplace -->
+            <div class="ambient-item" id="sound-fire">
+              <div class="ambient-control-row">
+                <button class="ambient-toggle" data-sound="fire" title="Toggle Fireplace">
+                  <svg class="sound-off-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" y1="4" x2="20" y2="20"/>
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                  </svg>
+                  <svg class="sound-on-icon hidden" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+                  </svg>
+                </button>
+                <div class="ambient-details">
+                  <span class="ambient-label">Campfire Crackle</span>
+                  <input type="range" class="ambient-slider" data-sound="fire" min="0" max="1" step="0.05" value="0.5">
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- WIDGET 3: Zen Stats & Analytics -->
+        <section class="widget-card glass-card stats-widget">
+          <div class="widget-header">
+            <h3>Focus Dashboard</h3>
+            <button class="btn-text" id="btn-reset-stats" title="Reset stats for today">Clear Stats</button>
+          </div>
+          
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-value" id="stat-minutes">0</span>
+              <span class="stat-label">Focus Mins</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="stat-sessions">0</span>
+              <span class="stat-label">Cycles</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-value" id="stat-tasks">0</span>
+              <span class="stat-label">Completed Tasks</span>
+            </div>
+          </div>
+
+          <!-- Mindfulness Quote Box -->
+          <div class="quote-container">
+            <p class="quote-text" id="zen-quote">"Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment."</p>
+            <p class="quote-author" id="zen-author">— Buddha</p>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- Footer containing time greetings and quiet quotes -->
+    <footer class="app-footer">
+      <p id="footer-greeting">Have a mindful day.</p>
+      <p class="footer-links">
+        <a href="#" id="open-settings-btn">Settings</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Settings Modal (Glassmorphism Modal overlay) -->
+  <div class="modal-overlay hidden" id="settings-modal">
+    <div class="modal-card glass-card">
+      <div class="modal-header">
+        <h2>Timer Customization</h2>
+        <button class="modal-close" id="close-settings-btn" title="Close Settings">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="setting-group">
+          <h3>Interval Durations (Minutes)</h3>
+          <div class="settings-durations">
+            <div class="duration-input-box">
+              <label for="set-focus">Focus</label>
+              <input type="number" id="set-focus" min="1" max="180" value="25">
+            </div>
+            <div class="duration-input-box">
+              <label for="set-short">Short Break</label>
+              <input type="number" id="set-short" min="1" max="60" value="5">
+            </div>
+            <div class="duration-input-box">
+              <label for="set-long">Long Break</label>
+              <input type="number" id="set-long" min="1" max="120" value="15">
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group checkbox-group">
+          <div class="checkbox-row">
+            <input type="checkbox" id="set-autoplay" checked>
+            <label for="set-autoplay">Autostart next session</label>
+          </div>
+          <div class="checkbox-row">
+            <input type="checkbox" id="set-ticking">
+            <label for="set-ticking">Ticking sound in background</label>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <h3>Alarm Chime Pitch</h3>
+          <div class="range-row">
+            <input type="range" id="set-chime-pitch" min="200" max="1000" step="50" value="440">
+            <span id="chime-pitch-val">Standard (440 Hz)</span>
+          </div>
+          <button type="button" class="btn-secondary" id="test-chime-btn" style="margin-top: 10px; width: 100%;">Test Alarm Sound</button>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-secondary" id="btn-settings-cancel">Cancel</button>
+        <button class="btn-primary" id="btn-settings-save">Save Settings</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Link -->
+  <script src="app.js?v=2"></script>
+</body>
+</html>
